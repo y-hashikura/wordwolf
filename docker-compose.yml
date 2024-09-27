@@ -3,11 +3,11 @@ services:
   react-app:
     container_name: wordwolf_reacp_app
     build:
-      context: ./react_project # Reactアプリケーションのファイルが配置されているディレクトリを指定
+      context: ./frontend/react_project # Reactアプリケーションのファイルが配置されているディレクトリを指定
       dockerfile: Dockerfile # ./react_project ディレクトリ内にある Dockerfile を使ってコンテナをビルド
     ports:
       - "3000:3000"  # http://localhost:3000にアクセスすると、Reactアプリケーションがコンテナ内で実行される開発サーバーに接続できる
     volumes: # ホスト側のファイルシステムとコンテナ内のファイルシステムを同期させるために使用
-      - ./react_project:/react_project # ホストのreact_projectをマウント
+      - ./frontend/react_project:/react_project # ホストのreact_projectをマウント
     stdin_open: true
     tty: true
