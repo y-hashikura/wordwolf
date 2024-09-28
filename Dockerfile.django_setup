@@ -16,11 +16,3 @@ RUN django-admin startproject django_project .
 
 # REST APIのアプリケーションフォルダ作成コマンド
 RUN python manage.py startapp api
-
-# # マイグレーションの適用
-# # 初期セットアップ＆コマンド実行の場合初期のマイグレーション実行が必要みたい。
-# # ないとエラーになる
-# RUN python manage.py migrate
-
-# # Djangoの開発サーバ起動
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

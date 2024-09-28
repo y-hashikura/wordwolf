@@ -1,13 +1,48 @@
-version: '3' # compose.ymlのバージョンを使用"3"が広く扱われる
+# compose.ymlのバージョンを使用"3"が広く扱われる
+version: '3' 
 services:
   react-app:
+    # コンテナ名
     container_name: wordwolf_reacp_app
     build:
-      context: ./frontend/react_project # Reactアプリケーションのファイルが配置されているディレクトリを指定
-      dockerfile: Dockerfile # ./react_project ディレクトリ内にある Dockerfile を使ってコンテナをビルド
+      # Reactアプリケーションのファイルが配置されているディレクトリを指定
+      context: ./frontend/react_project
+      # ./react_project ディレクトリ内にある Dockerfile を使ってコンテナをビルド
+      dockerfile: Dockerfile 
     ports:
-      - "3000:3000"  # http://localhost:3000にアクセスすると、Reactアプリケーションがコンテナ内で実行される開発サーバーに接続できる
-    volumes: # ホスト側のファイルシステムとコンテナ内のファイルシステムを同期させるために使用
-      - ./frontend/react_project:/react_project # ホストのreact_projectをマウント
+      # http://localhost:3000にアクセスすると、Reactアプリケーションがコンテナ内で実行される開発サーバーに接続できる
+      - "3000:3000"
+    # ホスト側のファイルシステムとコンテナ内のファイルシステムを同期させるために使用
+    volumes:
+      # ホストのreact_projectをマウント
+      - ./frontend/react_project:/react_project
+      - /react_project/node_modules
     stdin_open: true
     tty: true
+    depends_on:
+      - django-app
+  django-app:
+    container_name: wordwolf_django_app
+    build:
+      context: ./backend 
+      dockerfile: Dockerfile 
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend 
+    depends_on:
+      - mysql_app
+  mysql_app:
+    # 公式のMySQLイメージをそのまま使用するのでDockerfileが不要
+    image: mysql:8.0
+    container_name: wordwolf_db
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+      MYSQL_DATABASE: wordwolf_database
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: local_p@ssw0rd
+    ports:
+      - "3306:3306"
+    volumes:
+      # データの永続化を設定(コンテナが削除されてもデータを維持する仕組み)
+      - ./mysql_data:/var/lib/mysql

@@ -1,3 +1,6 @@
+# このDockerfileは初期セットアップで一回実行するためだけに使用する。
+# チームに展開するDockerfileとは異なります。
+
 # Node.js 18を使用
 FROM node:18
 

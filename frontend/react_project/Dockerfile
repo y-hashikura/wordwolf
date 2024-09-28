@@ -10,12 +10,16 @@ WORKDIR /react_project
 COPY package*.json ./
 
 # 依存関係のインストール
+RUN npm cache clean --force
 RUN npm install
+RUN npm install axios --save
 
 # アプリのソースコードをコピー
 # 1つ目の.はホスト側のディレクトリを示し、2つ目はコンテナ側のディレクトリを示す
 # react_project直下の内容がそのままコピーされる
 COPY . .
 
+RUN chmod +x ./wait-for-it.sh
+
 # 開発サーバーを起動
-CMD ["npm", "start"]
+CMD ["./wait-for-it.sh", "django-app:8000", "--", "npm", "start"]

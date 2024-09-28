@@ -1,0 +1,11 @@
+# Djangoのmigrationファイル
+*.pyc
+__pycache__/
+db.sqlite3
+
+# 環境設定ファイル
+.env
+
+# 静的ファイルやメディアファイル
+staticfiles/
+media/
