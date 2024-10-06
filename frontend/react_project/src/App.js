@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import GameSetupPage from './pages/GameSetupPage';
+import React, { useState , createContext} from 'react';
+import { GameSetupPage, PlayersInputPage} from './pages';
+import { usePlayers, useWolves, useTalkTime, useStepUp } from './hooks'
+
+// Context API
+export const GameContext = createContext();
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('setup');  // 初期ページを設定
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'setup':
-        return <GameSetupPage setCurrentPage={setCurrentPage} />;
-      default:
-        return <GameSetupPage setCurrentPage={setCurrentPage} />;
-    }
-  };
+  // カスタムフック
+  const { players, increasePlayers, decreasePlayers } = usePlayers();
+  const { wolves, increaseWolves, decreaseWolves } = useWolves();
+  const { talkTime, increaseTalkTime, decreaseTalkTime } = useTalkTime();
+  const { stepUps, increaseStepUps, decreaseStepUps } = useStepUp(); // 現在の状態を管理するステータス
 
   return (
-    <div>
-      {/* 初期ページとして設定ページを表示 */}
-      {renderPage()}  
-    </div>
+    <GameContext.Provider value={{
+        players, increasePlayers, decreasePlayers,
+        wolves, increaseWolves, decreaseWolves,
+        talkTime, increaseTalkTime, decreaseTalkTime,
+        stepUps, increaseStepUps, decreaseStepUps 
+    }}>
+        {stepUps === 1 && <GameSetupPage />}
+        {stepUps === 2 && <PlayersInputPage />}
+    </GameContext.Provider>
   );
 };
 

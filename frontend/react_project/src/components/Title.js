@@ -1,15 +1,14 @@
 /**
- * @file GameSetupTitle.js
- * @description ゲーム初期画面のタイトルを管理
- * @module GameSetupPage
+ * @file Title.js
+ * @description サブタイトルを表示するためのReactコンポーネント
+ * @module Title
  * @example
- * import GameSetupPage from './pages/GameSetupPage';
- * // このページをレンダリングするには、Reactコンポーネントとして使用します。
- * <GameSetupPage />
- * 作成者：橋倉 佳希
- * 更新者：
- * 更新履歴：
- * 　・初期作成 2024/10/04
+ * 直接扱う場合：import Title from './components/Title';
+ * 名前付きエクスポート：export {default as Title} from './Title'
+ * @author 橋倉 佳希
+ * @updated_by
+ * @update_history
+ * 　・2024/10/04 初期作成
  */
 
 import React from "react";
