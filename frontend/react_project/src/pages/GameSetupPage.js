@@ -15,7 +15,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 // hooksのエントリーポイント(index.js)をインポート
-import {usePlayers , useWolves, useTalkTime} from '../hooks'
+import { usePlayers , useWolves, useTalkTime} from '../hooks'
+// componentsのエントリーポイント(index.js)をインポート
+import { Title } from '../components'
 
 const GameSetupPage = () => {
     const {players, increasePlayers, decreasePlayers} = usePlayers();
@@ -24,7 +26,7 @@ const GameSetupPage = () => {
 
     return (
         <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
-        <h1>Word Wolf</h1>
+        <Title />
         <p>～Deduction games～</p>
         <div className="setup-box bg-light p-4 rounded">
             <div className="d-flex flex-column">
