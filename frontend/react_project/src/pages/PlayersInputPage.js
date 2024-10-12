@@ -12,7 +12,7 @@
  */
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import { Title, SubTitle, NextButton, PreviewButton } from '../components'
+import { Title, SubTitle, NextPageButton, PreviewPageButton } from '../components'
 
 import { GameContext } from '../App';
 
@@ -40,8 +40,8 @@ const PlayersInputPage = () => {
                 </div>
             </div>
             <div className="d-flex flex-column">
-                <NextButton />
-                <PreviewButton />
+                <NextPageButton />
+                <PreviewPageButton />
             </div>
       </Container>
 

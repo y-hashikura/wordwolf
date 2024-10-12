@@ -1,10 +1,10 @@
 /**
- * @file PreviewButton.js
+ * @file PreviewPageButton.js
  * @description 人数や時間をカウンターするためのコンポーネント
- * @module PreviewButton
+ * @module PreviewPageButton
  * @example
- * 直接扱う場合：import PreviewButton from './components/PreviewButton';
- * 名前付きエクスポート：export {default as PreviewButton} from './PreviewButton'
+ * 直接扱う場合：import PreviewPageButton from './components/PreviewPageButton';
+ * 名前付きエクスポート：export {default as PreviewPageButton} from './PreviewPageButton'
  * @author 橋倉 佳希
  * @updated_by
  * @update_history
@@ -15,10 +15,10 @@ import React, { useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { GameContext } from "../App";
 
-const PreviewButton = () => {
+const PreviewPageButton = () => {
     const { decreaseStepUps } = useContext(GameContext);
     return (
         <Button className="mt-4" variant="primary" onClick={decreaseStepUps}>Preview</Button>
     )
 }
-export default PreviewButton
+export default PreviewPageButton

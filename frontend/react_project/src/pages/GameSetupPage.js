@@ -14,7 +14,7 @@
 
 import React, { useContext } from 'react';
 import { Container, Button } from 'react-bootstrap';
-import { Title, SubTitle, Counter, NextButton } from '../components'
+import { Title, SubTitle, Counter, NextPageButton } from '../components'
 import { GameContext } from '../App';
 
 const GameSetupPage = () => {
@@ -54,7 +54,7 @@ const GameSetupPage = () => {
                 </div>
             </div>
             <div className="d-flex flex-column">
-                <NextButton />
+                <NextPageButton />
                 <Button className="mt-2" variant="link">遊び方を見る</Button>
             </div>
       </Container>

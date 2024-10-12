@@ -13,7 +13,6 @@
 
 import React, { useState, useEffect } from "react";
 
-
 const usePlayerNames = (count) => {
 
     // 人数の状態管理の数に基づいて配列の要素を用意

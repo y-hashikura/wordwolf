@@ -1,10 +1,10 @@
 /**
- * @file NextButton.js
+ * @file NextPageButton.js
  * @description 人数や時間をカウンターするためのコンポーネント
- * @module NextButton
+ * @module NextPageButton
  * @example
- * 直接扱う場合：import NextButton from './components/NextButton';
- * 名前付きエクスポート：export {default as NextButton} from './NextButton'
+ * 直接扱う場合：import NextPageButton from './components/NextPageButton';
+ * 名前付きエクスポート：export {default as NextPageButton} from './NextPageButton'
  * @author 橋倉 佳希
  * @updated_by
  * @update_history
@@ -15,10 +15,10 @@ import React, { useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { GameContext } from "../App";
 
-const NextButton = () => {
+const NextPageButton = () => {
     const { increaseStepUps } = useContext(GameContext);
     return (
         <Button className="mt-4" variant="primary" onClick={increaseStepUps}>Next</Button>
     )
 }
-export default NextButton
+export default NextPageButton
