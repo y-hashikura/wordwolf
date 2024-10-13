@@ -1,6 +1,6 @@
 import React, { useState , createContext} from 'react';
-import { GameSetupPage, PlayersInputPage, PlayerMessagesPage} from './pages';
-import { usePlayers, useWolves, useTalkTime, useStepUp, usePlayerNames, usePlayerCurrentIndex } from './hooks'
+import { GameSetupPage, PlayersInputPage, PlayerMessagesPage, GameStartPage} from './pages';
+import { usePlayers, useWolves, useTalkTime, useStepUp, usePlayerNames } from './hooks'
 
 // Context API
 export const GameContext = createContext();
@@ -16,8 +16,6 @@ const App = () => {
   const { stepUps, increaseStepUps, decreaseStepUps } = useStepUp();
   // ユーザ名を管理
   const { playerNames, updatePlayerName } = usePlayerNames(players); 
-  // ユーザインデックスを管理
-  const { playerCurrentIndex, nextPlayerIndex, previewPlayerIndex } = usePlayerCurrentIndex(); 
 
   return (
     <GameContext.Provider value={{
@@ -25,12 +23,12 @@ const App = () => {
         wolves, increaseWolves, decreaseWolves,
         talkTime, increaseTalkTime, decreaseTalkTime,
         stepUps, increaseStepUps, decreaseStepUps,
-        playerNames, updatePlayerName,
-        playerCurrentIndex, nextPlayerIndex, previewPlayerIndex
+        playerNames, updatePlayerName
     }}>
         {stepUps === 1 && <GameSetupPage />}
         {stepUps === 2 && <PlayersInputPage />}
         {stepUps === 3 && <PlayerMessagesPage />}
+        {stepUps === 4 && <GameStartPage initialTimeInMinutes={talkTime} />}
     </GameContext.Provider>
   );
 };

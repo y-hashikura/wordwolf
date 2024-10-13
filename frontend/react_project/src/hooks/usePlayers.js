@@ -12,14 +12,19 @@
  */
 import { useState } from 'react';
 
-// 他コンポーネントで扱えるようにもするために人数は可変できるように引数設定(現状は一つの画面のみ使用)
 const usePlayers = (initialPlayers = 3) => {
+
+  // 参加プレイヤー人数の状態を管理。初期値としてinitialPlayersが設定される。
   const [players, setPlayers] = useState(initialPlayers);
 
-  const increasePlayers = () => setPlayers(players + 1);
-  const decreasePlayers = () => setPlayers(Math.max(players - 1, 1));
+  // 参加プレイヤーの人数を1増やす関数。
+  const increasePlayers = () => setPlayers((playerCount) => playerCount + 1);
+
+  // 参加プレイヤーの人数を1減らす関数
+  const decreasePlayers = () => setPlayers((playerCount) => Math.max(playerCount - 1, 1));
 
   return { players, increasePlayers, decreasePlayers };
+  
 };
 
 export default usePlayers;
