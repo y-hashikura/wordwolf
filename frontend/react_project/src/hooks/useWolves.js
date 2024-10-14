@@ -12,7 +12,7 @@
  */
 import { useState } from 'react';
 
-const useWolves = (initialPlayers = 3) => {
+const useWolves = (initialPlayers = 1) => {
   const [wolves, setWolves] = useState(initialPlayers);
 
   const increaseWolves = () => setWolves(wolves + 1);
