@@ -1,4 +1,4 @@
-import React, { useState , createContext} from 'react';
+import React, { createContext} from 'react';
 import { GameSetupPage, PlayersInputPage, PlayerMessagesPage, GameStartPage} from './pages';
 import { usePlayers, useWolves, useTalkTime, useStepUp, usePlayerNames } from './hooks'
 
