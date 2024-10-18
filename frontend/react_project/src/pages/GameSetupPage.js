@@ -25,10 +25,10 @@ const GameSetupPage = () => {
     } = useContext(GameContext);
 
     return (
-        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
+        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px'}}>
             <Title />
             <SubTitle/>
-            <div className="setup-box bg-light p-4 rounded">
+            <div className="setup-box p-4 rounded" style={{ backgroundColor: '#BBD1C7' }}>
                 <div className="d-flex flex-column">
                     <Counter 
                         title={"How many players are there?"}
@@ -55,7 +55,7 @@ const GameSetupPage = () => {
             </div>
             <div className="d-flex flex-column">
                 <NextPageButton />
-                <Button className="mt-2" variant="link">遊び方を見る</Button>
+                <Button className="mt-2" variant="link" style={{ color: 'white' }}>遊び方を見る</Button>
             </div>
       </Container>
     );
