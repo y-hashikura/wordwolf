@@ -14,7 +14,7 @@ import React from "react";
 
 const SubTitle = ({subTitle = "～Deduction games～"}) => {
     return (
-        <p style={{ color: 'white' }}>{subTitle}</p>
+        <p>{subTitle}</p>
     )
 }
 

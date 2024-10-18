@@ -35,8 +35,8 @@ const PlayerMessagesPage = () => {
     const renderPlayerConfirmation = () => {
         return (
             <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
-                <h2 style={{ color: 'white'}}>{playerNames[CurrentIndex]}さんですか？</h2>
-                <Button className="mt-4" variant="primary" style={{ backgroundColor: '#f5f5dc', border: '#f5f5dc', color: "black"}} onClick={nextPlayerStep}>OK</Button>
+                <h2>{playerNames[CurrentIndex]}さんですか？</h2>
+                <Button className="mt-4" variant="primary" onClick={nextPlayerStep}>OK</Button>
             </Container>
         );
     }
@@ -47,18 +47,17 @@ const PlayerMessagesPage = () => {
             <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
                 {CurrentIndex === playerNames.length - 1 ? ( // 最後のプレイヤーかを判定 ? 
                     <>
-                        <h2 style={{ color: 'white'}}>すべてのプレイヤーの確認が完了しました</h2>
-                        <p style={{ color: 'white'}}>ゲームの準備ができました！</p>
+                        <h2>すべてのプレイヤーの確認が完了しました</h2>
+                        <p>ゲームの準備ができました！</p>
                         <NextPageButton />
                     </>
                 ) : (
                     <>
-                        <h2 style={{ color: 'white'}}>{playerNames[CurrentIndex]}さんのお題は○○です</h2>
-                        <h2 style={{ color: 'white'}}>確認できましたら次へボタンを押下してください</h2>
+                        <h2>{playerNames[CurrentIndex]}さんのお題は○○です</h2>
+                        <h2>確認できましたら次へボタンを押下してください</h2>
                         <Button
                             className="mt-4"
                             variant="primary"
-                            style={{ backgroundColor: '#f5f5dc', border: '#f5f5dc', color: "black"}}
                             onClick={() => {
                                 clearPlayerStep();
                                 nextPlayerIndex();

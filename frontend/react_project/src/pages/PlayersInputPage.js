@@ -26,12 +26,11 @@ const PlayersInputPage = () => {
         <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
             <Title title='プレイヤー名を入力して下さい'/>
             <SubTitle subTitle=''/>
-            <div className="setup-box p-4 rounded" style={{ backgroundColor: '#BBD1C7' }}>
+            <div className="setup-box bg-light p-4 rounded">
                 <div className="d-flex flex-column">
                 {playerNames.map((name, index) => (
                     <input
                         type="text"
-                        className="my-2 rounded input-group-text border-0"
                         value={name}
                         onChange={(e) => updatePlayerName(index, e.target.value)}
                         placeholder={`Enter name for player ${index + 1}`}

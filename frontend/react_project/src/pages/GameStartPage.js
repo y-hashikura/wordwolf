@@ -72,10 +72,10 @@ const GameStartPage = () => {
                 styles={buildStyles
                     (
                         {
-                            pathColor: '#BBD1C7',
-                            textColor: 'White',
-                            trailColor: '#f5f5dc',
-                            backgroundColor: '#BBD1C7',
+                            pathColor: '#ff9999',
+                            textColor: 'Black',
+                            trailColor: '#eee',
+                            backgroundColor: '#ff9999',
                             textSize: '16px',
                         }
                     )
@@ -88,7 +88,7 @@ const GameStartPage = () => {
                         top: '20px',
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        color: 'White',
+                        color: 'Black',
                         fontSize: '16px',
                     }
                 }

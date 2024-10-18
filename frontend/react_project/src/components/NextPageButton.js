@@ -18,7 +18,7 @@ import { GameContext } from "../App";
 const NextPageButton = () => {
     const { increaseStepUps } = useContext(GameContext);
     return (
-        <Button className="mt-4" variant="primary" onClick={increaseStepUps} style={{ backgroundColor: '#f5f5dc', border: '#f5f5dc', color: "black"}}>Next</Button>
+        <Button className="mt-4" variant="primary" onClick={increaseStepUps}>Next</Button>
     )
 }
 export default NextPageButton

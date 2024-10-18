@@ -18,9 +18,9 @@ const Counter = (props) => {
         <div className="my-3">
             <div>{props.title}</div>
             <div>
-                <Button onClick={props.decreaseFunction} style={{ backgroundColor: '#495D48', border: '#495D48'}}>−</Button>
+                <Button onClick={props.decreaseFunction}>−</Button>
                 <span className="mx-2">{props.currentcount} {props.unit}</span>
-                <Button onClick={props.increaseFunction} style={{ backgroundColor: '#495D48', border: '#495D48'}}>＋</Button>
+                <Button onClick={props.increaseFunction}>＋</Button>
             </div>
         </div>
     )

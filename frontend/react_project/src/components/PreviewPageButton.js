@@ -18,7 +18,7 @@ import { GameContext } from "../App";
 const PreviewPageButton = () => {
     const { decreaseStepUps } = useContext(GameContext);
     return (
-        <Button className="mt-4" variant="primary" onClick={decreaseStepUps} style={{ backgroundColor: '#f5f5dc', border: '#f5f5dc', color: "black"}}>Preview</Button>
+        <Button className="mt-4" variant="primary" onClick={decreaseStepUps}>Preview</Button>
     )
 }
 export default PreviewPageButton
