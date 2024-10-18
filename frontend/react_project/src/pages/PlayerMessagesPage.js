@@ -11,7 +11,7 @@
  * 　・2024/10/04 初期作成
  */
 import React, {useContext, useState} from "react";
-import { GameContext } from '../App';
+import { PlayerNamesContext } from '../contexts';
 import { NextPageButton, NextPlayerButton, PreviewPageButton, PreviewPlayerButton } from '../components'
 import { Container, Button } from 'react-bootstrap';
 
@@ -20,7 +20,7 @@ const PlayerMessagesPage = () => {
     // ContextApiより状態を取得
     const { 
         playerNames, // プレイヤー名を管理
-    } = useContext(GameContext)
+    } = useContext(PlayerNamesContext)
 
     // ユーザインデックスの状態管理
     const [CurrentIndex, setCurrentIndex] = useState(0)

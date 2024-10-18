@@ -15,12 +15,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Container } from 'react-bootstrap';
-import { GameContext } from '../App';
+import { TalkTimeContext } from '../contexts';
  
 const GameStartPage = () => {
     
     // Context APIよりトークタイム時間を取得
-    const { talkTime } = useContext(GameContext)
+    const { talkTime } = useContext(TalkTimeContext)
     
     // 分⇒秒変換
     const initialTime = talkTime * 60;

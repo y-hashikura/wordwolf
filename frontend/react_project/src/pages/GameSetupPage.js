@@ -15,14 +15,20 @@
 import React, { useContext } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Title, SubTitle, Counter, NextPageButton } from '../components'
-import { GameContext } from '../App';
+import { PlayersContext, WolvesContext, TalkTimeContext } from '../contexts';
 
 const GameSetupPage = () => {
     const { 
         players, increasePlayers, decreasePlayers, 
-        wolves, increaseWolves, decreaseWolves, 
+    } = useContext(PlayersContext);
+
+    const {
+        wolves, increaseWolves, decreaseWolves,  
+    } = useContext(WolvesContext);
+
+    const {
         talkTime, increaseTalkTime, decreaseTalkTime,  
-    } = useContext(GameContext);
+    } = useContext(TalkTimeContext);
 
     return (
         <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>

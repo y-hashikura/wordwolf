@@ -13,10 +13,10 @@
 
 import React, { useContext } from "react";
 import { Button } from 'react-bootstrap';
-import { GameContext } from "../App";
+import { StepUpContext } from "../contexts";
 
 const PreviewPageButton = () => {
-    const { decreaseStepUps } = useContext(GameContext);
+    const { decreaseStepUps } = useContext(StepUpContext);
     return (
         <Button className="mt-4" variant="primary" onClick={decreaseStepUps}>Preview</Button>
     )

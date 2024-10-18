@@ -14,13 +14,13 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { Title, SubTitle, NextPageButton, PreviewPageButton } from '../components'
 
-import { GameContext } from '../App';
+import { PlayerNamesContext } from '../contexts';
 
 // ユーザ名を入力するコンポートネント
 const PlayersInputPage = () => {
 
     // 人数の状態管理を取得
-    const { playerNames, updatePlayerName } = useContext(GameContext)
+    const { playerNames, updatePlayerName } = useContext(PlayerNamesContext)
 
     return (
         <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
