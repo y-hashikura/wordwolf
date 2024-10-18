@@ -11,9 +11,7 @@
  * 　・2024/10/04 初期作成
  */
 import React, { useContext } from 'react';
-import { Container } from 'react-bootstrap';
-import { Title, SubTitle, NextPageButton, PreviewPageButton } from '../components'
-
+import { Title, SubTitle, NextPageButton, PreviewPageButton, ContainerCenter } from '../components'
 import { PlayerNamesContext } from '../contexts';
 
 // ユーザ名を入力するコンポートネント
@@ -23,7 +21,7 @@ const PlayersInputPage = () => {
     const { playerNames, updatePlayerName } = useContext(PlayerNamesContext)
 
     return (
-        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
+        <ContainerCenter>
             <Title title='プレイヤー名を入力して下さい'/>
             <SubTitle subTitle=''/>
             <div className="setup-box bg-light p-4 rounded">
@@ -43,7 +41,7 @@ const PlayersInputPage = () => {
                 <NextPageButton />
                 <PreviewPageButton />
             </div>
-      </Container>
+      </ContainerCenter>
 
     );
 }

@@ -14,7 +14,7 @@
 
 import React, { useContext } from 'react';
 import { Container, Button } from 'react-bootstrap';
-import { Title, SubTitle, Counter, NextPageButton } from '../components'
+import { Title, SubTitle, Counter, NextPageButton, ContainerCenter } from '../components'
 import { PlayersContext, WolvesContext, TalkTimeContext } from '../contexts';
 
 const GameSetupPage = () => {
@@ -31,7 +31,7 @@ const GameSetupPage = () => {
     } = useContext(TalkTimeContext);
 
     return (
-        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
+        <ContainerCenter>
             <Title />
             <SubTitle/>
             <div className="setup-box bg-light p-4 rounded">
@@ -63,7 +63,7 @@ const GameSetupPage = () => {
                 <NextPageButton />
                 <Button className="mt-2" variant="link">遊び方を見る</Button>
             </div>
-      </Container>
+      </ContainerCenter>
     );
 }
 export default GameSetupPage;

@@ -16,6 +16,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Container } from 'react-bootstrap';
 import { TalkTimeContext } from '../contexts';
+import { ContainerCenter } from '../components';
  
 const GameStartPage = () => {
     
@@ -65,7 +66,7 @@ const GameStartPage = () => {
     const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   
     return (
-        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
+        <ContainerCenter>
             <CircularProgressbar
                 value={percentage}
                 text={formattedTime}
@@ -95,7 +96,7 @@ const GameStartPage = () => {
             >
                 残りトーク時間
             </div>
-        </Container>
+        </ContainerCenter>
     );
   };
 
