@@ -14,7 +14,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Container } from 'react-bootstrap';
 import { TalkTimeContext } from '../contexts';
 import { ContainerCenter } from '../components';
  

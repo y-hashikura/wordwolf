@@ -15,10 +15,9 @@ import React, { useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { StepUpContext } from "../contexts";
 
-const NextPageButton = () => {
+export const NextPageButton = () => {
     const { increaseStepUps } = useContext(StepUpContext);
     return (
         <Button className="mt-4" variant="primary" onClick={increaseStepUps}>Next</Button>
     )
 }
-export default NextPageButton

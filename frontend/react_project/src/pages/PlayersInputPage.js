@@ -11,7 +11,7 @@
  * 　・2024/10/04 初期作成
  */
 import React, { useContext } from 'react';
-import { Title, SubTitle, NextPageButton, PreviewPageButton, ContainerCenter } from '../components'
+import { Title, NextPageButton, PreviewPageButton, ContainerCenter, SetupBox, FlexColumn } from '../components'
 import { PlayerNamesContext } from '../contexts';
 
 // ユーザ名を入力するコンポートネント
@@ -23,9 +23,7 @@ const PlayersInputPage = () => {
     return (
         <ContainerCenter>
             <Title title='プレイヤー名を入力して下さい'/>
-            <SubTitle subTitle=''/>
-            <div className="setup-box bg-light p-4 rounded">
-                <div className="d-flex flex-column">
+            <SetupBox>
                 {playerNames.map((name, index) => (
                     <input
                         type="text"
@@ -34,13 +32,11 @@ const PlayersInputPage = () => {
                         placeholder={`Enter name for player ${index + 1}`}
                     />
                 ))}
-                    
-                </div>
-            </div>
-            <div className="d-flex flex-column">
+            </SetupBox>
+            <FlexColumn>
                 <NextPageButton />
                 <PreviewPageButton />
-            </div>
+            </FlexColumn>
       </ContainerCenter>
 
     );

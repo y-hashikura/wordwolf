@@ -15,10 +15,9 @@ import React, { useContext } from "react";
 import { Button } from 'react-bootstrap';
 import { StepUpContext } from "../contexts";
 
-const PreviewPageButton = () => {
+export const PreviewPageButton = () => {
     const { decreaseStepUps } = useContext(StepUpContext);
     return (
         <Button className="mt-4" variant="primary" onClick={decreaseStepUps}>Preview</Button>
     )
 }
-export default PreviewPageButton

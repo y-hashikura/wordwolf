@@ -13,7 +13,7 @@
 import React from "react";
 import { Button } from 'react-bootstrap';
 
-const Counter = (props) => {
+export const Counter = (props) => {
     return (
         <div className="my-3">
             <div>{props.title}</div>
@@ -25,4 +25,3 @@ const Counter = (props) => {
         </div>
     )
 }
-export default Counter

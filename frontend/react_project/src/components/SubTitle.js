@@ -12,10 +12,8 @@
  */
 import React from "react";
 
-const SubTitle = ({subTitle = "～Deduction games～"}) => {
+export const SubTitle = ({subTitle = "～Deduction games～"}) => {
     return (
         <p>{subTitle}</p>
     )
 }
-
-export default SubTitle

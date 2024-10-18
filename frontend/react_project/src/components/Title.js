@@ -13,9 +13,8 @@
 
 import React from "react";
 
-const Title = ({title = "Word Wolf"}) => {
+export const Title = ({title = "Word Wolf"}) => {
     return (
         <h1>{title}</h1>
     )
 }
-export default Title

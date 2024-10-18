@@ -8,7 +8,7 @@ export const PlayersProvider = ({ children }) => {
 
     return (
         <PlayersContext.Provider value={{ players, increasePlayers, decreasePlayers }}>
-        {children}
+            {children}
         </PlayersContext.Provider>
     );
 };
