@@ -1,46 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { createContext} from 'react';
+import { GameSetupPage, PlayersInputPage, PlayerMessagesPage, GameStartPage} from './pages';
+import { usePlayers, useWolves, useTalkTime, useStepUp, usePlayerNames } from './hooks'
+
+// Context API
+export const GameContext = createContext();
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // APIのURLを環境変数から取得する
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/products/';
-
-    // DjangoのAPIからデータを取得
-    axios.get(apiUrl)
-      .then((response) => {
-        setProducts(response.data);
-        setLoading(false);  // ローディング状態を終了
-      })
-      .catch((error) => {
-        setError('Error fetching data: ' + error.message);
-        setLoading(false);  // ローディング状態を終了
-      });
-  }, []);
-
-  // ローディング中の表示
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  // エラー発生時の表示
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // 参加人数を管理
+  const { players, increasePlayers, decreasePlayers } = usePlayers();
+  // ウルフ人数を管理
+  const { wolves, increaseWolves, decreaseWolves } = useWolves();
+  // トークタイムを管理
+  const { talkTime, increaseTalkTime, decreaseTalkTime } = useTalkTime();
+  // 現在の状態を管理
+  const { stepUps, increaseStepUps, decreaseStepUps } = useStepUp();
+  // ユーザ名を管理
+  const { playerNames, updatePlayerName } = usePlayerNames(players); 
 
   return (
-    <div>
-      <h1>Products</h1>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>{product.name} - ${product.price}</li>
-        ))}
-      </ul>
-    </div>
+    <GameContext.Provider value={{
+        players, increasePlayers, decreasePlayers,
+        wolves, increaseWolves, decreaseWolves,
+        talkTime, increaseTalkTime, decreaseTalkTime,
+        stepUps, increaseStepUps, decreaseStepUps,
+        playerNames, updatePlayerName
+    }}>
+        {stepUps === 1 && <GameSetupPage />}
+        {stepUps === 2 && <PlayersInputPage />}
+        {stepUps === 3 && <PlayerMessagesPage />}
+        {stepUps === 4 && <GameStartPage initialTimeInMinutes={talkTime} />}
+    </GameContext.Provider>
   );
 };
 

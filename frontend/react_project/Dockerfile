@@ -13,6 +13,8 @@ COPY package*.json ./
 RUN npm cache clean --force
 RUN npm install
 RUN npm install axios --save
+RUN npm install react-bootstrap bootstrap
+RUN npm install react-circular-progressbar
 
 # アプリのソースコードをコピー
 # 1つ目の.はホスト側のディレクトリを示し、2つ目はコンテナ側のディレクトリを示す
