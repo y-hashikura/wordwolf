@@ -1,26 +1,25 @@
 /**
- * @file GameSetupPage.js
- * @description このモジュールは、ゲームの初期設定ページ（プレイヤー人数、エロウルフ人数、トークタイム）を提供します。
- * @module GameSetupPage
- * @example
- * import GameSetupPage from './pages/GameSetupPage';
- * // このページをレンダリングするには、Reactコンポーネントとして使用します。
- * <GameSetupPage />
- * 作成者：橋倉 佳希
- * 更新者：
- * 更新履歴：
- * 　・初期作成 2024/10/04
+ * @file SetupPage.js
+ * @description
+ * - ゲームの初期設定画面を提供
+ * - 参加人数、ウルフ人数、トークタイムを提供する。
+ * @module SetupPage
  */
 
 import React, { useContext } from 'react';
-import { Button } from 'react-bootstrap';
-import { Title, SubTitle, Counter, NextPageButton, ContainerCenter, SetupBox, FlexColumn } from '../components'
-import { PlayersContext, WolvesContext, TalkTimeContext } from '../contexts';
+import { Title, SubTitle, Counter, ContainerCenter, SetupBox, FlexColumn, CustomButton } from '../components'
+import { PlayersContext, WolvesContext, TalkTimeContext, StepUpContext } from '../contexts';
 
 export const SetupPage = () => {
+
+    // 参加人数の状態管理及び関数を取得
     const { players, increasePlayers, decreasePlayers } = useContext(PlayersContext);
-    const {wolves, increaseWolves, decreaseWolves } = useContext(WolvesContext);
-    const {talkTime, increaseTalkTime, decreaseTalkTime } = useContext(TalkTimeContext);
+    // ウルフ人数の状態管理及び関数を取得
+    const { wolves, increaseWolves, decreaseWolves } = useContext(WolvesContext);
+    // トークタイムの状態管理及び関数を取得
+    const { talkTime, increaseTalkTime, decreaseTalkTime } = useContext(TalkTimeContext);
+    // ページ遷移の関数を取得
+    const { increaseStepUps } = useContext(StepUpContext)
 
     return (
         <ContainerCenter>
@@ -50,8 +49,16 @@ export const SetupPage = () => {
                 />
             </SetupBox>
             <FlexColumn>
-                <NextPageButton />
-                <Button className="mt-2" variant="link">View How to Play</Button>
+                <CustomButton 
+                    text="Next" 
+                    onClick={increaseStepUps} 
+                />
+                <CustomButton 
+                    text="View How to Play" 
+                    onClick={increaseStepUps} 
+                    className="mt-2" 
+                    variant="link"
+                />
             </FlexColumn>
       </ContainerCenter>
     );

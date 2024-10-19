@@ -11,67 +11,47 @@
  * 　・2024/10/04 初期作成
  */
 import React, {useContext, useState} from "react";
-import { PlayerNamesContext } from '../contexts';
-import { NextPageButton } from '../components'
+import { PlayerNamesContext, StepUpContext } from '../contexts';
+import { CustomButton } from '../components'
 import { Container, Button } from 'react-bootstrap';
+import { PlayerConfirmation, PlayerWord } from '../features';
 
 export const PlayerMessagesPage = () => {
 
     // ContextApiより状態を取得
     const { playerNames } = useContext(PlayerNamesContext)
-
+    // ページ遷移の関数を取得
+    const { increaseStepUps } = useContext(StepUpContext)
     // ユーザインデックスの状態管理
     const [CurrentIndex, setCurrentIndex] = useState(0)
     const nextPlayerIndex = () => setCurrentIndex((index) => index + 1);
 
-    // 下記画面ステップの状態管理
+    // ユーザ確認 or ワード表示画面のステップ状態管理
     const [playerStep, setPlayerStep] = useState(1);
     const nextPlayerStep = () => setPlayerStep(2)
     const clearPlayerStep = () => setPlayerStep(1)
 
-    // プレイヤー確認画面
-    const renderPlayerConfirmation = () => {
-        return (
-            <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
-                <h2>{playerNames[CurrentIndex]}さんですか？</h2>
-                <Button className="mt-4" variant="primary" onClick={nextPlayerStep}>OK</Button>
-            </Container>
-        );
-    }
-
-    // プレイヤーメッセージ表示画面
-    const renderPlayerMessage = () => {
-        return (
-            <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
-                {CurrentIndex === playerNames.length - 1 ? ( 
-                    <>
-                        <h2>すべてのプレイヤーの確認が完了しました</h2>
-                        <p>ゲームの準備ができました！</p>
-                        <NextPageButton />
-                    </>
-                ) : (
-                    <>
-                        <h2>{playerNames[CurrentIndex]}さんのお題は○○です</h2>
-                        <h2>確認できましたら次へボタンを押下してください</h2>
-                        <Button
-                            className="mt-4"
-                            variant="primary"
-                            onClick={() => {
-                                clearPlayerStep();
-                                nextPlayerIndex();
-                            }}
-                        >
-                            Next
-                        </Button>
-                    </>
-                )}
-            </Container>
-        );
+    const test = () => {
+        clearPlayerStep()
+        nextPlayerIndex()
     }
 
     return (
-        <>
-            {playerStep === 1 ? renderPlayerConfirmation() : renderPlayerMessage()}
-        </>
+        <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
+            {playerStep === 1 ? (
+                // プレイヤー確認画面
+                <PlayerConfirmation 
+                    CurrentIndex={CurrentIndex} 
+                    onClick={nextPlayerStep}
+                />
+            ) : (
+                // プレイヤーワード表示画面
+                CurrentIndex === playerNames.length - 1 ? (
+                    <PlayerWord CurrentIndex={CurrentIndex} onClick={increaseStepUps}/>
+                ) : (
+                    <PlayerWord CurrentIndex={CurrentIndex} onClick={test}/>
+                )
+            )}
+        </Container>
     );
 }

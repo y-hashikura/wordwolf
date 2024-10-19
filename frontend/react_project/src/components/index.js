@@ -6,10 +6,6 @@ export { Title } from './Title'
 export { SubTitle } from './SubTitle'
 // カウンター
 export { Counter } from './Counter'
-// 次へボタン
-export { NextPageButton } from './NextPageButton'
-// 前ボタン
-export { PreviewPageButton } from './PreviewPageButton'
 // メインコンテナ領域
 export { ContainerCenter } from './ContainerCenter'
 // フレックスボックス縦

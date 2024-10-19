@@ -10,10 +10,14 @@ import React from "react";
 import { Button } from 'react-bootstrap';
 
 export const CustomButton = (props) => {
+    
+    const variant = props.variant || "primary"
+    const className = props.className || "mt-4"
+
     return (
         <Button 
-            className="mt-4" 
-            variant="primary" 
+            className={className}
+            variant={variant}
             onClick={props.onClick}
         >
             {props.text}

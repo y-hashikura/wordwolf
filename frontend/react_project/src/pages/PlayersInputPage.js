@@ -11,14 +11,16 @@
  * 　・2024/10/04 初期作成
  */
 import React, { useContext } from 'react';
-import { Title, NextPageButton, PreviewPageButton, ContainerCenter, SetupBox, FlexColumn } from '../components'
-import { PlayerNamesContext } from '../contexts';
+import { Title, ContainerCenter, SetupBox, FlexColumn, CustomButton } from '../components'
+import { PlayerNamesContext, StepUpContext } from '../contexts';
 
 // ユーザ名を入力するコンポートネント
 export const PlayersInputPage = () => {
 
     // 人数の状態管理を取得
     const { playerNames, updatePlayerName } = useContext(PlayerNamesContext)
+    // ページ遷移の関数を取得
+    const { increaseStepUps, decreaseStepUps } = useContext(StepUpContext)
 
     return (
         <ContainerCenter>
@@ -34,8 +36,14 @@ export const PlayersInputPage = () => {
                 ))}
             </SetupBox>
             <FlexColumn>
-                <NextPageButton />
-                <PreviewPageButton />
+                <CustomButton 
+                    text="Next"
+                    onClick={increaseStepUps}
+                />
+                <CustomButton 
+                    text="Preview"
+                    onClick={decreaseStepUps}
+                />
             </FlexColumn>
       </ContainerCenter>
 
