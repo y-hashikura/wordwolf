@@ -15,14 +15,14 @@ import { Title, NextPageButton, PreviewPageButton, ContainerCenter, SetupBox, Fl
 import { PlayerNamesContext } from '../contexts';
 
 // ユーザ名を入力するコンポートネント
-const PlayersInputPage = () => {
+export const PlayersInputPage = () => {
 
     // 人数の状態管理を取得
     const { playerNames, updatePlayerName } = useContext(PlayerNamesContext)
 
     return (
         <ContainerCenter>
-            <Title title='プレイヤー名を入力して下さい'/>
+            <Title title='Please enter the player name'/>
             <SetupBox>
                 {playerNames.map((name, index) => (
                     <input
@@ -41,4 +41,3 @@ const PlayersInputPage = () => {
 
     );
 }
-export default PlayersInputPage;

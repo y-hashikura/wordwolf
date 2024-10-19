@@ -16,3 +16,5 @@ export { ContainerCenter } from './ContainerCenter'
 export { FlexColumn } from './FlexColumn'
 // テキスト欄
 export { SetupBox } from './SetupBox'
+// フッター
+export { Footer } from './Footer'

@@ -17,7 +17,7 @@ import { Button } from 'react-bootstrap';
 import { Title, SubTitle, Counter, NextPageButton, ContainerCenter, SetupBox, FlexColumn } from '../components'
 import { PlayersContext, WolvesContext, TalkTimeContext } from '../contexts';
 
-const GameSetupPage = () => {
+export const GameSetupPage = () => {
     const { players, increasePlayers, decreasePlayers } = useContext(PlayersContext);
     const {wolves, increaseWolves, decreaseWolves } = useContext(WolvesContext);
     const {talkTime, increaseTalkTime, decreaseTalkTime } = useContext(TalkTimeContext);
@@ -51,9 +51,8 @@ const GameSetupPage = () => {
             </SetupBox>
             <FlexColumn>
                 <NextPageButton />
-                <Button className="mt-2" variant="link">遊び方を見る</Button>
+                <Button className="mt-2" variant="link">View How to Play</Button>
             </FlexColumn>
       </ContainerCenter>
     );
 }
-export default GameSetupPage;

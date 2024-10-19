@@ -11,17 +11,21 @@
  * 　・2024/10/04 初期作成
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { PlayersContext } from "../contexts";
 
-const usePlayerNames = (count) => {
+const usePlayerNames = () => {
+
+    const { players } = useContext(PlayersContext)
 
     // 人数の状態管理の数に基づいて配列の要素を用意
-    const [playerNames, setPlayerNames] = useState(Array(count).fill(''))
+    const [playerNames, setPlayerNames] = useState(Array(players).fill(''))
 
-    // countが変更されるのを依存値として設定することでcountが変化する度にこのエフェクトが実行される
+    // 依存値にplayersを設定。
+    // これにより初期設定画面にて参加人数が変化する度に本フックが適用されその人数分の配列が再作成される
     useEffect(() => {
-        setPlayerNames(Array(count).fill(''));
-    }, [count]);
+        setPlayerNames(Array(players).fill(''));
+    }, [players]);
 
     // 特定インデックスに該当するプレイヤー名の状態変化を行う関数
     const updatePlayerName = (index, newName) => {

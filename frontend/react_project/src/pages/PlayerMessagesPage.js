@@ -15,7 +15,7 @@ import { PlayerNamesContext } from '../contexts';
 import { NextPageButton } from '../components'
 import { Container, Button } from 'react-bootstrap';
 
-const PlayerMessagesPage = () => {
+export const PlayerMessagesPage = () => {
 
     // ContextApiより状態を取得
     const { playerNames } = useContext(PlayerNamesContext)
@@ -43,7 +43,7 @@ const PlayerMessagesPage = () => {
     const renderPlayerMessage = () => {
         return (
             <Container className="text-center" style={{ maxWidth: '400px', marginTop: '50px' }}>
-                {CurrentIndex === playerNames.length - 1 ? ( // 最後のプレイヤーかを判定 ? 
+                {CurrentIndex === playerNames.length - 1 ? ( 
                     <>
                         <h2>すべてのプレイヤーの確認が完了しました</h2>
                         <p>ゲームの準備ができました！</p>
@@ -75,5 +75,3 @@ const PlayerMessagesPage = () => {
         </>
     );
 }
-
-export default PlayerMessagesPage

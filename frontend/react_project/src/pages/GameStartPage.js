@@ -1,102 +1,103 @@
-/**
- * @file GameStartPage.js
- * @description ゲーム開始時のコンポーネント
- * @module GameStartPage
- * @example
- * 直接扱う場合：import GameStartPage from './pages/GameStartPage';
- * 名前付きエクスポート：export {default as GameStartPage} from './pages'
- * @author 橋倉 佳希
- * @updated_by
- * @update_history
- * 　・2024/10/04 初期作成
- */
-
 import React, { useState, useEffect, useContext } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { TalkTimeContext } from '../contexts';
-import { ContainerCenter } from '../components';
- 
-const GameStartPage = () => {
-    
-    // Context APIよりトークタイム時間を取得
-    const { talkTime } = useContext(TalkTimeContext)
-    
-    // 分⇒秒変換
-    const initialTime = talkTime * 60;
+import { ContainerCenter, FlexColumn, Title } from '../components';
 
-    // 残り時間の状態管理
+/**
+ * useTimeLeft: 残り時間の状態管理
+ * @param {number} initialTime - カウントダウンの初期開始時間。
+ * @returns {number} timeLeft - 残り時間
+ * @description
+ * カウントダウンの初期開始時間を元に1秒ごとに減少する残り時間を返す
+ * 残り時間が0になったらタイマーは止まる
+ * 
+ * - JSの組み込み関数のsetInterval()を使用して1秒ごとに残り時間を減少する。
+ * - JSの組み込み関数のclearInterval()を使用して残り時間が0になったら停止する。
+ * - 副作用のクリーンアップ関数としてclearInterval()を使用する。
+ */
+const useTimeLeft = (initialTime) => {
+    
     const [timeLeft, setTimeLeft] = useState(initialTime);
-
-    // 全体の時間に対する残り時間のパーセンテージの状態管理
-    const [percentage, setPercentage] = useState(100);
-
-    // 残り時間の副作用管理
+    
     useEffect(() => {
-        // setIntervalはjsの組み込み関数であり、指定した時間ごとに自動で動作する関数
         const interval = setInterval(() => {
-            // setTimeLeftはTimeLeftという状態管理(残り時間)を更新するための関数
-            // prevはTimeLeftの最新の状態のこと
             setTimeLeft((prev) => {
                 if (prev <= 1) {
-                    // clearIntervalはjsの組み込み関数であり、setIntervalで指定した時間を停止する関数
                     clearInterval(interval);
                     return 0;
                 }
                 return prev - 1;
             });
-        }, 1000); // 1秒(1000ミリ秒)毎に関数が実行される
+        }, 1000);
 
-        // クリーンアップ関数
         return () => clearInterval(interval);
-    }, []);
 
-    // パーセンテージの副作用の管理
+    }, [initialTime]);
+
+    return timeLeft;
+};
+
+/**
+ * usePercentage: パーセンテージの状態管理
+ * @param {number} timeLeft - 残り時間。
+ * @param {number} initialTime - カウントダウンの初期開始時間。
+ * @description
+ * 残り時間が全体の初期開始時間に対しての割合がどれくらいかを計算する
+ * 
+ * - (残り時間 / 全体時間) * 100
+ */
+const usePercentage = (timeLeft, initialTime) => {
+
+    const [percentage, setPercentage] = useState(100);
+
     useEffect(() => {
-        // setPercentageはPercentageの状態変化させるための関数
         setPercentage((timeLeft / initialTime) * 100);
     }, [timeLeft, initialTime]);
 
-    // 分を算出
+    return percentage;
+};
+
+/**
+ * GameStartPage: ゲーム開始画面のコンポーネント
+ * @description
+ */
+export const GameStartPage = () => {
+    
+    // Context APIよりトークタイム時間を取得
+    const { talkTime } = useContext(TalkTimeContext);
+
+    // 分⇒秒変換
+    const initialTime = talkTime * 60;
+
+    // カスタムフックを使って残り時間とパーセンテージを管理
+    const timeLeft = useTimeLeft(initialTime);
+    const percentage = usePercentage(timeLeft, initialTime);
+
+    // 分と秒を計算
     const minutes = Math.floor(timeLeft / 60);
-    // 秒を算出
     const seconds = timeLeft % 60;
-    // 表示内容  
+
+    // 表示内容
     const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  
+
     return (
         <ContainerCenter>
+            <Title title="Talk Time" />
+            <h4>残りトーク時間</h4>
+            <div style={{ width: '200px', height: '200px' , display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}> {/* サイズを指定 */}
             <CircularProgressbar
                 value={percentage}
                 text={formattedTime}
-                styles={buildStyles
-                    (
-                        {
-                            pathColor: '#ff9999',
-                            textColor: 'Black',
-                            trailColor: '#eee',
-                            backgroundColor: '#ff9999',
-                            textSize: '16px',
-                        }
-                    )
-                }
+                styles={buildStyles({
+                    pathColor: '#ff9999',
+                    textColor: 'Black',
+                    trailColor: '#eee',
+                    textSize: '16px',
+                })}
             />
-            <div
-                style={
-                    {
-                        position: 'absolute',
-                        top: '20px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        color: 'Black',
-                        fontSize: '16px',
-                    }
-                }
-            >
-                残りトーク時間
             </div>
+            
         </ContainerCenter>
     );
-  };
-
-export default GameStartPage
+};
