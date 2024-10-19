@@ -18,3 +18,5 @@ export { FlexColumn } from './FlexColumn'
 export { SetupBox } from './SetupBox'
 // フッター
 export { Footer } from './Footer'
+// カスタムボタン(いずれ全てこれに置き換える)
+export { CustomButton } from './CustomButton'

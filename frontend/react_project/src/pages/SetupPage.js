@@ -17,7 +17,7 @@ import { Button } from 'react-bootstrap';
 import { Title, SubTitle, Counter, NextPageButton, ContainerCenter, SetupBox, FlexColumn } from '../components'
 import { PlayersContext, WolvesContext, TalkTimeContext } from '../contexts';
 
-export const GameSetupPage = () => {
+export const SetupPage = () => {
     const { players, increasePlayers, decreasePlayers } = useContext(PlayersContext);
     const {wolves, increaseWolves, decreaseWolves } = useContext(WolvesContext);
     const {talkTime, increaseTalkTime, decreaseTalkTime } = useContext(TalkTimeContext);

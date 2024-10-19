@@ -10,15 +10,17 @@
  * @update_history
  * 　・2024/10/04 初期作成
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const useStepUp = (initialstepUps = 1) => {
   const [stepUps, setstepUps] = useState(initialstepUps);
 
-  const increaseStepUps = () => setstepUps(stepUps + 1);
-  const decreaseStepUps = () => setstepUps(Math.max(stepUps - 1, 1));
+  const increaseStepUps = () => setstepUps((prevstepUps) => prevstepUps + 1);
+  const decreaseStepUps = () => setstepUps((prevstepUps) => Math.max(prevstepUps - 1, 1));
 
-  return { stepUps, increaseStepUps, decreaseStepUps };
+  const setStepUpsTo = (value) => setstepUps(value);
+
+  return { stepUps, increaseStepUps, decreaseStepUps, setStepUpsTo};
 };
 
 export default useStepUp;

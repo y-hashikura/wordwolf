@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { GameSetupPage, PlayersInputPage, PlayerMessagesPage, GameStartPage } from './';
+import { SetupPage, PlayersInputPage, PlayerMessagesPage, TalkStartPage, TalkEndPage, ResultsPage } from '.';
 import { StepUpContext } from '../contexts';
 
-export const PageTransaction = () => {
+export const TransactionPage = () => {
 
     // ページ遷移用のカスタムフック
     const { stepUps } = useContext(StepUpContext);
@@ -10,13 +10,17 @@ export const PageTransaction = () => {
     return (
         <>
             {/* 初期設定画面 */}
-            {stepUps === 1 && <GameSetupPage />}
+            {stepUps === 1 && <SetupPage />}
             {/* ユーザ名入力画面 */}
             {stepUps === 2 && <PlayersInputPage />}
             {/* ワード表示画面 */}
             {stepUps === 3 && <PlayerMessagesPage />}
-            {/* ゲーム開始画面 */}
-            {stepUps === 4 && <GameStartPage />}
+            {/* トーク開始画面 */}
+            {stepUps === 4 && <TalkStartPage />}
+            {/* トーク終了画面 */}
+            {stepUps === 5 && <TalkEndPage />}
+            {/* 結果発表画面 */}
+            {stepUps === 6 && <ResultsPage />}
         </>
     );
 };

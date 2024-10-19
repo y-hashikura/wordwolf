@@ -4,11 +4,11 @@ import { useStepUp } from '../hooks';
 export const StepUpContext = createContext();
 
 export const StepUpProvider = ({ children }) => {
-    const { stepUps, increaseStepUps, decreaseStepUps } = useStepUp();
+    const { stepUps, increaseStepUps, decreaseStepUps, setStepUpsTo } = useStepUp();
 
     return (
-        <StepUpContext.Provider value={{ stepUps, increaseStepUps, decreaseStepUps }}>
-        {children}
+        <StepUpContext.Provider value={{ stepUps, increaseStepUps, decreaseStepUps, setStepUpsTo }}>
+            {children}
         </StepUpContext.Provider>
     );
 };
