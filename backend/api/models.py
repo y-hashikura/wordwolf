@@ -1,8 +1,9 @@
 from django.db import models
 
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
+class WordData(models.Model):
+    wolf_word = models.CharField(max_length=100)
+    normal_word = models.CharField(max_length=100)
+    
     def __str__(self):
-        return self.name
+        return f'{self.normal_word}:{self.wolf_word}'
+
