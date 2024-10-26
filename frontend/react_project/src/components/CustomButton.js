@@ -12,7 +12,7 @@ import { Button } from 'react-bootstrap';
 export const CustomButton = (props) => {
     
     const variant = props.variant || "primary"
-    const className = props.className || "mt-4"
+    const className = props.className || "mt-4 custom-button"
 
     return (
         <Button 

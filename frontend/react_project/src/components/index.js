@@ -16,3 +16,5 @@ export { SetupBox } from './SetupBox'
 export { Footer } from './Footer'
 // カスタムボタン(いずれ全てこれに置き換える)
 export { CustomButton } from './CustomButton'
+// カスタムモダル
+export { CustomModal } from './CustomModal'

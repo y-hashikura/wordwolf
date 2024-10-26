@@ -12,15 +12,16 @@
  */
 import React from "react";
 import { Button } from 'react-bootstrap';
+import '/react_project/src/App.css';
 
 export const Counter = (props) => {
     return (
         <div className="my-3">
             <div>{props.title}</div>
             <div>
-                <Button onClick={props.decreaseFunction}>−</Button>
+                <Button onClick={props.decreaseFunction} className="custom-button">−</Button>
                 <span className="mx-2">{props.currentcount} {props.unit}</span>
-                <Button onClick={props.increaseFunction}>＋</Button>
+                <Button onClick={props.increaseFunction} className="custom-button">＋</Button>
             </div>
         </div>
     )

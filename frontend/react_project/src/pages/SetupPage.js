@@ -7,8 +7,9 @@
  */
 
 import React, { useContext } from 'react';
-import { Title, SubTitle, Counter, ContainerCenter, SetupBox, FlexColumn, CustomButton } from '../components'
+import { Title, SubTitle, Counter, ContainerCenter, SetupBox, FlexColumn, CustomButton, CustomModal } from '../components'
 import { PlayersContext, WolvesContext, TalkTimeContext, StepUpContext } from '../contexts';
+import { useState } from 'react';
 
 export const SetupPage = () => {
 
@@ -20,6 +21,12 @@ export const SetupPage = () => {
     const { talkTime, increaseTalkTime, decreaseTalkTime } = useContext(TalkTimeContext);
     // ページ遷移の関数を取得
     const { increaseStepUps } = useContext(StepUpContext)
+
+    const [show, setShow] = useState(false);
+    // モーダルを閉じる関数
+    const handleClose = () => setShow(false);
+    // モーダルを開く関数
+    const handleShow = () => setShow(true);
 
     return (
         <ContainerCenter>
@@ -54,11 +61,11 @@ export const SetupPage = () => {
                     onClick={increaseStepUps} 
                 />
                 <CustomButton 
-                    text="View How to Play" 
-                    onClick={increaseStepUps} 
-                    className="mt-2" 
-                    variant="link"
+                    text="How to Play" 
+                    onClick={handleShow} 
+                    className="mt-4 custom-lighter-button" 
                 />
+                <CustomModal show={show} onClose={handleClose}/>
             </FlexColumn>
       </ContainerCenter>
     );

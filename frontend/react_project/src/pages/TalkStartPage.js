@@ -65,20 +65,20 @@ export const TalkStartPage = () => {
     return (
         <ContainerCenter>
             <Title title="Talk Time" />
-            <h4>残りトーク時間</h4>
+            <h4 style={{ color: 'white' }}>残りトーク時間</h4>
             <div style={{ width: '250px', height: '250px', marginLeft: 'auto', marginRight: 'auto'}}>
                 <CircularProgressbar
                     value={percentage}
                     text={formattedTime}
                     styles={buildStyles({
-                        pathColor: '#ff9999',
-                        textColor: 'Black',
+                        pathColor: '#f9bc60',
+                        textColor: 'White',
                         trailColor: '#eee',
                         textSize: '16px',
                     })}
                 />
             </div>
-            <Button onClick={increaseStepUps}>強制終了</Button>
+            <Button onClick={increaseStepUps} className="mt-4 custom-button">強制終了</Button>
             
         </ContainerCenter>
     );

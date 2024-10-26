@@ -15,6 +15,6 @@ import React from "react";
 
 export const Title = ({title = "Word Wolf"}) => {
     return (
-        <h1>{title}</h1>
+        <h1 style={{ color: '#fffffe' }}>{title}</h1>
     )
 }

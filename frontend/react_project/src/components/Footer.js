@@ -3,11 +3,11 @@ import React from "react"
 export const Footer = () => {
   
   return (
-    <div className="fixed-bottom d-flex justify-content-center mb-3">
+    <div className="d-flex justify-content-center mt-5 mb-3" style={{height: '50px' }}>
         <img 
           src="/wolf.png" 
           alt="wolf" 
-          style={{ width: '150px', height: '150px' }} 
+          className="img-fluid"
         />
     </div>
   )

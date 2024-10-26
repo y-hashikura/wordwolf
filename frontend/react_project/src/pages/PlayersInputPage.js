@@ -32,6 +32,7 @@ export const PlayersInputPage = () => {
                         value={name}
                         onChange={(e) => updatePlayerName(index, e.target.value)}
                         placeholder={`Enter name for player ${index + 1}`}
+                        className='custom-input'
                     />
                 ))}
             </SetupBox>
