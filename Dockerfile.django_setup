@@ -1,0 +1,18 @@
+# このDockerfileは初期セットアップで一回実行するためだけに使用する。
+# チームに展開するDockerfileとは異なります。
+
+# 最新バージョンのイメージを使用
+FROM python:3.12
+
+# 作業ディレクトリを設定
+WORKDIR /backend
+
+RUN pip install --upgrade pip
+# DjangoとDjangoRestFrameworkのインストール
+RUN pip install django djangorestframework
+
+# Djangoプロジェクトフォルダ作成コマンド
+RUN django-admin startproject django_project .
+
+# REST APIのアプリケーションフォルダ作成コマンド
+RUN python manage.py startapp api

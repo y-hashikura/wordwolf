@@ -1,0 +1,10 @@
+
+/* 残り時間ラベルのスタイル */
+.time-label {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-size: 16px;
+}
