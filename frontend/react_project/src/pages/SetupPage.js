@@ -6,10 +6,9 @@
  * @module SetupPage
  */
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Title, SubTitle, Counter, ContainerCenter, SetupBox, FlexColumn, CustomButton, CustomModal } from '../components'
 import { PlayersContext, WolvesContext, TalkTimeContext, StepUpContext } from '../contexts';
-import { useState } from 'react';
 
 export const SetupPage = () => {
 

@@ -12,7 +12,7 @@
  */
 import React from "react";
 import { Button } from 'react-bootstrap';
-import '/react_project/src/App.css';
+import '../App.css';
 
 export const Counter = (props) => {
     return (
