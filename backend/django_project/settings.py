@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,15 +90,15 @@ DATABASES = {
         # Mysqlを活用すためのエンジン設定
         'ENGINE': 'django.db.backends.mysql',
         # docker-compose.ymlで設定したデータベース名
-        'NAME': 'wordwolf_database',
-        # docker-compose.ymlで設定したユーザー名  
-        'USER': 'local_user',              
+        'NAME': os.environ.get('MYSQL_DATABASE', 'wordwolf_database'),
+        # docker-compose.ymlで設定したユーザー名            
+        'USER': os.environ.get('MYSQL_USER', 'local_user'),
         # docker-compose.ymlで設定したパスワード
-        'PASSWORD': 'local_p@ssw0rd', 
-        # Docker Composeのサービス名（MySQLコンテナのホスト名）※コンテナ名ではないよ
-        'HOST': 'mysql_app',   
-        # MySQLのデフォルトポート             
-        'PORT': '3306',              
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'local_p@ssw0rd'),
+        # Docker Composeのサービス名（MySQLコンテナのホスト名）※コンテナ名ではないよ   
+        'HOST': os.environ.get('MYSQL_APP_NAME', 'mysql-app'),
+        # MySQLのデフォルトポート                   
+        'PORT': os.environ.get('MYSQL_PORT', '3306'),       
     }
 }
 

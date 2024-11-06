@@ -4,6 +4,8 @@ services:
   react-app:
     # コンテナ名
     container_name: wordwolf_reacp_app
+    env_file: 
+      - .env
     build:
       # Reactアプリケーションのファイルが配置されているディレクトリを指定
       context: ./frontend/react_project
@@ -11,7 +13,7 @@ services:
       dockerfile: Dockerfile 
     ports:
       # http://localhost:3000にアクセスすると、Reactアプリケーションがコンテナ内で実行される開発サーバーに接続できる
-      - "3000:3000"
+      - "${REACT_PORT}:3000"
     # ホスト側のファイルシステムとコンテナ内のファイルシステムを同期させるために使用
     volumes:
       # ホストのreact_projectをマウント
@@ -23,26 +25,26 @@ services:
       - django-app
   django-app:
     container_name: wordwolf_django_app
+    env_file: 
+      - .env
     build:
       context: ./backend 
       dockerfile: Dockerfile 
     ports:
-      - "8000:8000"
+      - "${DJANGO_PORT}:8000"
     volumes:
       - ./backend:/backend 
     depends_on:
-      - mysql_app
-  mysql_app:
-    # 公式のMySQLイメージをそのまま使用するのでDockerfileが不要
-    image: mysql:8.0
+      - ${MYSQL_APP_NAME}
+  mysql-app:
+    image: mysql:${MYSQL_VERSION}
     container_name: wordwolf_db
     environment:
-      MYSQL_ROOT_PASSWORD: p@ssw0rd
-      MYSQL_DATABASE: wordwolf_database
-      MYSQL_USER: local_user
-      MYSQL_PASSWORD: local_p@ssw0rd
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
     volumes:
-      # データの永続化を設定(コンテナが削除されてもデータを維持する仕組み)
       - ./mysql_data:/var/lib/mysql

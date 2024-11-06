@@ -53,7 +53,8 @@ export const PlayerMessagesPage = () => {
         // コンポーネントがマウントされたときにデータ取得を行う
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/wolfdata', {
+                const apiUrl = `${process.env.REACT_APP_API_BASE_URL}/wolfdata`;
+                const response = await axios.get(apiUrl, {
                     params: {
                         wolf: wolves,
                         normal: (players - wolves), 

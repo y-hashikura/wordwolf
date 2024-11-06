@@ -14,4 +14,6 @@ COPY . .
 RUN chmod +x ./wait-for-it.sh
 
 # MySQLが完全に起動しきってからマイグレーション実行とサーバ起動を行う
-CMD ["./wait-for-it.sh", "mysql_app:3306", "--", "sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+# マイグレーション実行無しで起動してみる
+CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:8000"]
+# CMD ["./wait-for-it.sh", "mysql-app:3306", "-t", "300", "--", "sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
