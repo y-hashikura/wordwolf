@@ -9,7 +9,7 @@ export const PlayerWord = (props) => {
 
     return (
         <>
-            <h2 style={{ color: 'white' }}>{playerNames[props.CurrentIndex]}, Your topic is "{wordDataList[props.CurrentIndex]}".</h2>
+            <h2 style={{ color: 'white' }}>{playerNames[props.CurrentIndex]}, Your topic is <br/>"{wordDataList[props.CurrentIndex]}".</h2>
             <h2 style={{ color: 'white' }}>Remember your topic and press "Next".</h2>
             <CustomButton
                 text="Next"
