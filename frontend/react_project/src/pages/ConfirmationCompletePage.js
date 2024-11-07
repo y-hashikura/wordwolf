@@ -9,9 +9,9 @@ export const ConfirmationCompletePage = () => {
 
     return (
         <ContainerCenter>
-            <h2 style={{ color: 'white' }}>すべてのプレイヤーの確認が完了しました</h2>
-            <p style={{ color: 'white' }}>ゲームの準備ができました！</p>
-            <CustomButton text="Next" onClick={increaseStepUps}/>
+            <h2 style={{ color: 'white' }}>All players checked topics.</h2>
+            <p style={{ color: 'white' }}>Are you guys ready to play?</p>
+            <CustomButton text="Yes" onClick={increaseStepUps}/>
         </ContainerCenter>
     )
 }

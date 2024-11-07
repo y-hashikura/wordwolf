@@ -65,7 +65,6 @@ export const TalkStartPage = () => {
     return (
         <ContainerCenter>
             <Title title="Talk Time" />
-            <h4 style={{ color: 'white' }}>残りトーク時間</h4>
             <div style={{ width: '250px', height: '250px', marginLeft: 'auto', marginRight: 'auto'}}>
                 <CircularProgressbar
                     value={percentage}
@@ -78,7 +77,7 @@ export const TalkStartPage = () => {
                     })}
                 />
             </div>
-            <Button onClick={increaseStepUps} className="mt-4 custom-button">強制終了</Button>
+            <Button onClick={increaseStepUps} className="mt-4 custom-button">Finish game</Button>
             
         </ContainerCenter>
     );

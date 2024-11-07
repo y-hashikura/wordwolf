@@ -18,17 +18,17 @@ export const ResultsPage = () => {
 
     return (
         <ContainerCenter>
-            <Title title="結果発表画面"/>
+            <Title title="Result"/>
             <SetupBox>
                 <p>結果発表画面だよお</p>
             </SetupBox>
             <FlexColumn>
                 <CustomButton 
-                    text="TOPへ戻る"
+                    text="Go to TOP"
                     onClick={() => setStepUpsTo(1)}
                 />
                 <CustomButton 
-                    text="次のゲームへ"
+                    text="Next game"
                     onClick={() => setStepUpsTo(3)}
                 />
             </FlexColumn>
