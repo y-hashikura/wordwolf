@@ -13,6 +13,7 @@
 import React, { useContext } from 'react';
 import { Title, ContainerCenter, SetupBox, FlexColumn, CustomButton } from '../components'
 import { PlayerNamesContext, StepUpContext } from '../contexts';
+import usePlayerValidation from '../hooks/usePlayerValidation';
 
 // ユーザ名を入力するコンポートネント
 export const PlayersInputPage = () => {
@@ -22,6 +23,14 @@ export const PlayersInputPage = () => {
     // ページ遷移の関数を取得
     const { increaseStepUps, decreaseStepUps } = useContext(StepUpContext)
 
+    // usePlayerValidation フックを呼び出し、エラーメッセージとバリデーション関数を取得
+    const { error, validateInputs } = usePlayerValidation(playerNames);
+
+    const handleNext = () => {
+        if (validateInputs()) {
+            increaseStepUps(); // 入力が有効な場合、次のステップに進む
+        }
+    };
     return (
         <ContainerCenter>
             <Title title='Please enter the player name'/>
@@ -35,11 +44,12 @@ export const PlayersInputPage = () => {
                         className='custom-input'
                     />
                 ))}
+                {error && <div className="text-danger">{error}</div>} {/* エラーメッセージの表示 */}
             </SetupBox>
             <FlexColumn>
                 <CustomButton 
                     text="Next"
-                    onClick={increaseStepUps}
+                    onClick={handleNext}
                 />
                 <CustomButton 
                     text="Preview"
