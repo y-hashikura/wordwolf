@@ -20,7 +20,7 @@ export const ResultsPage = () => {
         <ContainerCenter>
             <Title title="Result"/>
             <SetupBox>
-                <p>結果発表画面だよお</p>
+                <p>This game result is XXXX</p>
             </SetupBox>
             <FlexColumn>
                 <CustomButton 
