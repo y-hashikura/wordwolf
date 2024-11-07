@@ -18,3 +18,5 @@ export { Footer } from './Footer'
 export { CustomButton } from './CustomButton'
 // カスタムモダル
 export { CustomModal } from './CustomModal'
+// 結果表示
+export { ResultText } from './ResultText'
