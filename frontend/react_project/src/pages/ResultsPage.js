@@ -8,27 +8,29 @@
  */
 
 import React, { useContext } from "react";
-import { ContainerCenter, Title, CustomButton, SetupBox, FlexColumn } from "../components";
-import { StepUpContext } from "../contexts";
+import { ContainerCenter, Title, CustomButton, SetupBox, FlexColumn, ResultText } from "../components";
+import { StepUpContext, PlayerNamesContext, WordDataListContext } from "../contexts";
 
 
 export const ResultsPage = () => {
 
     const { setStepUpsTo } = useContext(StepUpContext)
+    const { playerNames } = useContext(PlayerNamesContext)
+    const { wordDataList } = useContext(WordDataListContext)
 
     return (
         <ContainerCenter>
-            <Title title="結果発表画面"/>
+            <Title title="Result"/>
             <SetupBox>
-                <p>結果発表画面だよお</p>
+                <ResultText players={playerNames} words={wordDataList}/>
             </SetupBox>
             <FlexColumn>
                 <CustomButton 
-                    text="TOPへ戻る"
+                    text="Go to TOP"
                     onClick={() => setStepUpsTo(1)}
                 />
                 <CustomButton 
-                    text="次のゲームへ"
+                    text="Next game"
                     onClick={() => setStepUpsTo(3)}
                 />
             </FlexColumn>

@@ -8,8 +8,8 @@ export const PlayerConfirmation = (props) => {
 
     return (
         <ContainerCenter>
-            <h2 style={{ color: 'white' }}>{playerNames[props.CurrentIndex]}さんですか？</h2>
-            <CustomButton text="OK" onClick={props.onClick} />
+            <h2 style={{ color: 'white' }}>Are you {playerNames[props.CurrentIndex]} ?</h2>
+            <CustomButton text="Yes" onClick={props.onClick} />
         </ContainerCenter>
     )
 }

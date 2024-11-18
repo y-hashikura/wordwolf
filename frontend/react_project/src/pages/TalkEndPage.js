@@ -22,10 +22,10 @@ export const TalkEndPage = () => {
         <ContainerCenter>
             <Title title="Talk End"/>
             <SetupBox>
-                <p>終了しました</p>
+                <p>Done!!</p>
             </SetupBox>
             <CustomButton
-                text="結果を見る"
+                text="check the result"
                 onClick={increaseStepUps}
             />
         </ContainerCenter>
